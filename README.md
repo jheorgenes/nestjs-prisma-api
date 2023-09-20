@@ -40,6 +40,10 @@ $ npm i --save @nestjs/core @nestjs/common rxjs reflect-metadata @nestjs/config
 $ npm i --save @nestjs/config
 ```
 
+```bash
+$ npm install class-validator class-transformer
+```
+
 ## Comandos Docker
 ### Permissão para executar Docker
 
