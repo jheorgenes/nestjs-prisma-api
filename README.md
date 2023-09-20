@@ -46,15 +46,40 @@ $ npm i --save @nestjs/config
 ```bash
 chmod +x .docker/entrypoint.sh
 ```
-### Criando os containers com docker
+### Criando os contêineres com docker
 
 ```bash
 $ docker-compose up
 ```
-### Removendo (deletando) o container criado no docker
+### Removendo (deletando) os contêineres criados
 
 ```bash
 $ docker-compose down
+```
+### Realiza apenas a etapa de build das imagens que serão utilizadas
+
+```bash
+$ docker-compose build
+```
+### Lista os contêineres
+
+```bash
+$ docker-compose ps
+```
+### Inicia os contêineres
+
+```bash
+$ docker-compose start
+```
+### Paralisa os contêineres
+
+```bash
+$ docker-compose stop
+```
+### Reinicia os contêineres
+
+```bash
+$ docker-compose restart
 ```
 
 ## Running the app
