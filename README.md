@@ -51,6 +51,20 @@ chmod +x .docker/entrypoint.sh
 ```bash
 $ docker-compose up
 ```
+### Executando os contêineres (sem gerar logs no console)
+
+```bash
+$ docker-compose up -d
+```
+
+### Executando no contêiner (especificando o contêiner pelo nome) um comando
+
+```bash
+$ docker-compose exec <nomeContainer> <bash ou comando que queria executar>
+```
+
+### OBS: Se executar o comando "docker-compose exec <nomeContainer> bash" será aberto o pront do container e lá poderá ser instalado outros pacotes no container.
+
 ### Removendo (deletando) os contêineres criados
 
 ```bash
@@ -80,6 +94,31 @@ $ docker-compose stop
 
 ```bash
 $ docker-compose restart
+```
+
+## Instalando o prisma
+### Recomendado instalar dentro do container criado do docker
+
+```bash
+# Instalação
+$ npm install prisma -D
+
+# Inicialização
+$ npx prisma init
+
+# Gerar uma migração prisma
+$ npx prisma migrate dev --name init
+
+# Abrir um client do prima studio
+$ npx prisma studio
+
+# O prisma generate comando lê seu esquema Prisma e atualiza a biblioteca Prisma Client gerada dentro do arquivo node_modules/@prisma/client.
+$ prisma generate
+
+# Depois de configurado a conexão do prisma no .env
+# Crie os models Schemas e então
+# Execute prisma db pull para transformar seu esquema de banco de dados em um esquema Prisma
+$ prisma db pull
 ```
 
 ## Running the app

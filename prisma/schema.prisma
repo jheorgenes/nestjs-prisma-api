@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement()) //Configuração padrão para autoIncrement
+  email     String   @unique //Definindo que o e-mail deverá ser único
+  name      String
+  admin     Boolean  @default(false) //Booleano com valor padrão false
+  createdAt DateTime @default(now()) //DataHora com valor padrão (data e hora atual)
+  posts     Post[] //Definindo Relacionamento oneToMany onde um usuário tem vários posts
+
+  @@map("user") //Definindo o nome da tabela no banco de dados
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  published Boolean  @default(false)
+  title     String   @db.VarChar(255) //Definindo limitação do campo string de acordo com o bd usado e a limitação desejada
+  content   String? //Campo opcional de ser preenchido
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  author    User?    @relation(fields: [authorId], references: [id]) //Definindo Relacionamento ManyToOne onde vários posts pode pertencer a um user
+  authorId  Int? //Campo para fazer a ligação entre User e Posts (chave estrangeira)
+
+  @@map("post")
+}
