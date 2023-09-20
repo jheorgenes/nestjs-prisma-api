@@ -41,17 +41,17 @@ $ npm i --save @nestjs/config
 ```
 
 ## Comandos Docker
-# Permissão para executar Docker
+### Permissão para executar Docker
 
 ```bash
 chmod +x .docker/entrypoint.sh
 ```
-# Criando os containers com docker
+### Criando os containers com docker
 
 ```bash
 $ docker-compose up
 ```
-# Removendo (deletando) o container criado no docker
+### Removendo (deletando) o container criado no docker
 
 ```bash
 $ docker-compose down
